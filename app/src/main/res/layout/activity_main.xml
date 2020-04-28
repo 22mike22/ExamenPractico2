@@ -80,26 +80,29 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnCapturar"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:onClick="onClickCapturar"
             android:backgroundTint="@android:color/holo_purple"
             android:text="Capturar" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnMostrar"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:onClick="inClickMostrar"
             android:backgroundTint="@android:color/holo_red_dark"
             android:text="Mostrar" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btnSalir"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:onClick="onClickSalir"
             android:backgroundTint="@android:color/holo_blue_light"
             android:text="Salir" />
     </LinearLayout>
