@@ -32,6 +32,7 @@ public class CapturarNuevo extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_capturar_nuevo);
+        getSupportActionBar().hide();
 
         txtNombre=findViewById(R.id.txtNombre);
         txtDescr=findViewById(R.id.txtDescr);

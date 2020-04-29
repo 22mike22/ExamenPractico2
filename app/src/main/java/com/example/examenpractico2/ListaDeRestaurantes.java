@@ -46,7 +46,7 @@ public class ListaDeRestaurantes extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_restaurantes);
-
+        getSupportActionBar().hide();
         rest=leerArchivo("JSON.txt");
 
         lstRes=findViewById(R.id.lstRes);

@@ -53,7 +53,9 @@ public class RestaurantAdapter extends ArrayAdapter<Restaurantes> {
         imgEstrellas.setImageResource(objects .get(position).getEstrellas());
         convertView.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Intent intent=new Intent(this,)
+                Intent intent=new Intent(context,detallado.class);
+                intent.putExtra("posicion",position);
+                context.startActivity(intent);
             }
         });
 
