@@ -24,7 +24,7 @@ public class ListaDeRestaurantes extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista_de_restaurantes);
+        setContentView(R.layout.layout_restaurantes);
         lstRes=findViewById(R.id.lstRes);
         lstRes.setAdapter((ListAdapter) new RestaurantAdapter(this, R.layout.activity_lista_de_restaurantes,rest));
     }
