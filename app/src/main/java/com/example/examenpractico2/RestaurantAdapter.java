@@ -27,6 +27,8 @@ public class RestaurantAdapter extends ArrayAdapter<Restaurantes> {
         this.resource = resource;
     }
 
+
+
     @NonNull
     public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         if(convertView == null){ //PRIMERA VEZ QUE SE EJECUTA LA APLICACION, HAY QUE CREAR EL LAYOUT

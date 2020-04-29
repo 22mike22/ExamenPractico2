@@ -1,85 +1,35 @@
 package com.example.examenpractico2;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
 
 public class ListaDeRestaurantes extends AppCompatActivity {
 
     ListView lstRes;
-
-    ArrayList<Restaurantes> rest = new ArrayList();
-    Gson gson = new Gson();
-
-
+    Restaurantes[] rest={
+            new Restaurantes("La Junta", "Antojería informal y sencilla que se especializa en tacos y montados, con amplia barra de verduras y salsas."
+                    , "5542661", R.drawable.lajunta,R.drawable.dose),
+            new Restaurantes("Poeta", ""
+                    , "5542661", R.drawable.poeta,R.drawable.dose),
+            new Restaurantes("El Papalote", ""
+                    , "5542661", R.drawable.elpapalote,R.drawable.trese),
+            new Restaurantes("El Rodeo", ""
+                    , "5542661", R.drawable.rodeo,R.drawable.unae),
+            new Restaurantes("Chihua tacos", ""
+                    , "5542661", R.drawable.chihuas,R.drawable.trese)
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_restaurantes);
-        getSupportActionBar().hide();
-        rest = leerArchivo("JSON.txt");
-
-        lstRes = findViewById(R.id.lstRes);
-        lstRes.setAdapter((ListAdapter) new RestaurantAdapter(this, R.layout.activity_lista_de_restaurantes, rest));
-
-        lstRes.setClickable(rest.size() > 0);
-        lstRes.getOnItemClickListener();
-
-
+        setContentView(R.layout.activity_lista_de_restaurantes);
+        lstRes=findViewById(R.id.lstRes);
+        lstRes.setAdapter((ListAdapter) new RestaurantAdapter(this, R.layout.activity_lista_de_restaurantes,rest));
     }
 
-    protected void onDestroy() {
 
-        super.onDestroy();
-    }
-
-    protected void mensaje(String mensaje) {
-        Toast toast = Toast.makeText(this, mensaje, Toast.LENGTH_SHORT);
-        toast.show();
-    }
-
-    private ArrayList<Restaurantes> leerArchivo(String nombre) {
-        String archivos[] = fileList();
-        if (ArchivoExiste(archivos, nombre)) {
-            try {
-                InputStreamReader archivo = new InputStreamReader(openFileInput(nombre));
-                BufferedReader br = new BufferedReader(archivo);
-                String linea = br.readLine();
-                String JSON = "";
-
-                while (linea != null) {
-                    JSON += linea + "\n";
-                    linea = br.readLine();
-                }
-                br.close();
-                archivo.close();
-                return gson.fromJson(JSON, new TypeToken<ArrayList<Restaurantes>>() {
-                }.getType());
-
-            } catch (IOException e) {
-                return new ArrayList<Restaurantes>();
-            }
-        }
-        return new ArrayList<Restaurantes>();
-    }
-
-    private boolean ArchivoExiste(String archivos[], String nombreArchivo) {
-        for (int i = 0; i < archivos.length; i++)
-            if (nombreArchivo.equals(archivos[i]))
-                return true;
-        return false;
-    }
 
 
 }
