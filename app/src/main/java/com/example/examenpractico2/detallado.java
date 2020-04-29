@@ -22,6 +22,5 @@ public class detallado extends AppCompatActivity {
         imagen=findViewById(R.id.imageViewImagen);
         opinion=findViewById(R.id.imageViewOpnion);
 
-
     }
 }
