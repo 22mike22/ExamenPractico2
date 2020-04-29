@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
         btnCapt=findViewById(R.id.btnCapturar);
         btnMostrar=findViewById(R.id.btnMostrar);
         btnSalir=findViewById(R.id.btnSalir);
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickSalir(View v){
-        onDestroy();
+        finish();
     }
 
     public void inClickMostrar(View v){
