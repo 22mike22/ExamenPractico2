@@ -56,6 +56,7 @@ public class RestaurantAdapter extends ArrayAdapter<Restaurantes> {
                 Intent intent=new Intent(context,detallado.class);
                 intent.putExtra("posicion",position);
                 context.startActivity(intent);
+
             }
         });
 
