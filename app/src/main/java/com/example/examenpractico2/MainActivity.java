@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickSalir(View v){
-        onDestroy();
+        finish();
     }
 
     public void inClickMostrar(View v){

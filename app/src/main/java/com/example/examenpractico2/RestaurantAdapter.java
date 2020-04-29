@@ -2,8 +2,11 @@ package com.example.examenpractico2;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,11 +14,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 public class RestaurantAdapter extends ArrayAdapter<Restaurantes> {
-    private Restaurantes[] objects;
+    private ArrayList<Restaurantes> objects;
     private Context context;
     private int resource;
-    public RestaurantAdapter(@NonNull Context context, int resource, @NonNull Restaurantes[] objects) {
+    public RestaurantAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Restaurantes> objects) {
         super(context,resource,objects);
         this.objects=objects;
         this.context = context;
@@ -23,7 +28,7 @@ public class RestaurantAdapter extends ArrayAdapter<Restaurantes> {
     }
 
     @NonNull
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         if(convertView == null){ //PRIMERA VEZ QUE SE EJECUTA LA APLICACION, HAY QUE CREAR EL LAYOUT
             convertView = ((Activity)context).getLayoutInflater().inflate(resource,parent,false);
         }
@@ -41,11 +46,19 @@ public class RestaurantAdapter extends ArrayAdapter<Restaurantes> {
         imgEstrellas = convertView.findViewById(R.id.imgEstrellas);
 
 
-        imgRestlyt.setImageResource(objects[position].getImagen());
-        txtNombreLyt.setText(objects[position].getNomRest());
-        txtDescrlyt.setText(objects[position].getDesc());
-        txtDirecclyt.setText("" + objects[position].getDircyTel());
-        imgEstrellas.setImageResource(objects [position].getEstrellas());
+        imgRestlyt.setImageResource(objects.get(position).getImagen());
+        txtNombreLyt.setText(objects.get(position).getNomRest());
+        txtDescrlyt.setText(objects.get(position).getDesc());
+        txtDirecclyt.setText("" + objects.get(position).getDircyTel());
+        imgEstrellas.setImageResource(objects .get(position).getEstrellas());
+        convertView.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent=new Intent(this,)
+            }
+        });
+
         return convertView;
     }
+
+
 }
