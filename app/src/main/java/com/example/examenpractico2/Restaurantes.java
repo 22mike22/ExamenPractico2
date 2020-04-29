@@ -31,6 +31,26 @@ public class Restaurantes {
         return imagen;
     }
 
+    public void setNomRest(String nomRest) {
+        this.nomRest = nomRest;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public void setDircyTel(String dircyTel) {
+        this.dircyTel = dircyTel;
+    }
+
+    public void setImagen(int imagen) {
+        this.imagen = imagen;
+    }
+
+    public void setEstrellas(int estrellas) {
+        this.estrellas = estrellas;
+    }
+
     public int getEstrellas() {
         return estrellas;
     }
