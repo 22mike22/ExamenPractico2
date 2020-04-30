@@ -1,6 +1,7 @@
 package com.example.examenpractico2;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +28,7 @@ public class CapturarNuevo extends AppCompatActivity implements View.OnClickList
     Restaurantes capturar;
     EditText txtNombre,txtDescr,txtDirecc;
     ArrayList<Restaurantes> BD;
+    Button btnCambiar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class CapturarNuevo extends AppCompatActivity implements View.OnClickList
         txtNombre=findViewById(R.id.txtNombre);
         txtDescr=findViewById(R.id.txtDescr);
         txtDirecc=findViewById(R.id.txtDirecc);
+        btnCambiar=findViewById(R.id.btnCambiar);
 
         ImageView imgSelecionada = findViewById(R.id.imgSelect);
         imgSelecionada.setOnClickListener(this);
@@ -47,11 +50,17 @@ public class CapturarNuevo extends AppCompatActivity implements View.OnClickList
         BD = leerArchivo("JSON.txt");
     }
 
+    public void OnClickCambiar(View v){
+        Intent intCambiar = new Intent(this,ListaImagen.class);
+        startActivity(intCambiar);
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.imgSelect:
-                //lansar actividad para elegir imagen;
+                Intent intCambiar = new Intent(this,ListaImagen.class);
+                startActivity(intCambiar);
                 break;
             case R.id.btnGuardar:
                 String nombre=txtNombre.getText().toString();
@@ -64,7 +73,7 @@ public class CapturarNuevo extends AppCompatActivity implements View.OnClickList
                 }else if(Direccion.equalsIgnoreCase("")){
                     mensaje("Añadir direcion");
                 }else {
-                    capturar = new Restaurantes(nombre, Descripcion, Direccion, R.drawable.chihuas, R.drawable.unae);
+                    capturar = new Restaurantes(nombre, Descripcion, Direccion, R.drawable.chihuas, R.drawable.estrella1);
                     BD.add(capturar);
                     Guardar();
                 }
