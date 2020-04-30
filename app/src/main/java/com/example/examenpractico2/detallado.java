@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.squareup.picasso.Picasso;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 public class detallado extends AppCompatActivity {
     TextView nombre,descripcion,direccion;
     ImageView imagen,opinion;
-    Button eliminar,regresar;
+    Button eliminar;
     Gson gson=new Gson();
     int posicion;
     ArrayList<Restaurantes> lista;
@@ -38,7 +39,6 @@ public class detallado extends AppCompatActivity {
         direccion=findViewById(R.id.textViewDirecion);
 
         eliminar=findViewById(R.id.botonBorrar);
-        regresar=findViewById(R.id.buttonRegresar);
 
         imagen=findViewById(R.id.imageViewImagen);
         opinion=findViewById(R.id.imageViewOpnion);
@@ -53,10 +53,8 @@ public class detallado extends AppCompatActivity {
         direccion.setText(elemento.getDircyTel());
         descripcion.setText(elemento.getDesc());
 
-
-
-        imagen.setImageResource(elemento.getImagen());
-        opinion.setImageResource(elemento.getEstrellas());
+        recargarImagen();
+        Picasso.get().load(lista.get(posicion).getImagen()).resize(255,255).into(imagen);
 
         eliminar.setOnClickListener(new View.OnClickListener(){
            public void onClick(View v){
@@ -71,32 +69,29 @@ public class detallado extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 switch (lista.get(posicion).getEstrellas()){
-                    case R.drawable.unae:
-                        lista.get(posicion).setEstrellas(R.drawable.dose);
+                    case R.drawable.estrella1:
+                        lista.get(posicion).setEstrellas(R.drawable.estrella2);
                         break;
-                    case R.drawable.dose:
-                        lista.get(posicion).setEstrellas(R.drawable.trese);
+                    case R.drawable.estrella2:
+                        lista.get(posicion).setEstrellas(R.drawable.estrella3);
                         break;
-                    case R.drawable.trese:
-                        lista.get(posicion).setEstrellas(R.drawable.unae);
+                    case R.drawable.estrella3:
+                        lista.get(posicion).setEstrellas(R.drawable.estrella1);
                         break;
                     default:
                        Toast t= Toast.makeText(v.getContext(),"ERROR",Toast.LENGTH_LONG);
                        t.show();
                 }
-                Intent intento=new Intent(v.getContext(),detallado.class);
+                recargarImagen();
                 Guardar();
-                startActivity(intento);
             }
         });
 
-        regresar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intento=new Intent(v.getContext(),ListaDeRestaurantes.class);
-                startActivity(intento);
-            }
-        });
+
+    }
+
+    private void recargarImagen(){
+        Picasso.get().load(lista.get(posicion).getEstrellas()).resize(255,255).into(opinion);
     }
 
 
