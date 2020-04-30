@@ -58,7 +58,8 @@ public class detallado extends AppCompatActivity {
         eliminar.setOnClickListener(new View.OnClickListener(){
            public void onClick(View v){
                lista.remove(posicion);
-               Intent intento=new Intent(v.getContext(),ListaDeRestaurantes.class);
+               Guardar();
+               Intent intento=new Intent(v.getContext(),MainActivity.class);
                startActivity(intento);
            }
         });

@@ -52,7 +52,7 @@ public class ListaDeRestaurantes extends AppCompatActivity {
         lstRes=findViewById(R.id.lstRes);
         lstRes.setAdapter((ListAdapter) new RestaurantAdapter(this, R.layout.activity_lista_de_restaurantes,rest));
 
-        lstRes.setClickable(true);
+        lstRes.setClickable(rest.size()>0);
         lstRes.getOnItemClickListener();
 
     }
