@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class detallado extends AppCompatActivity {
     TextView nombre,descripcion,direccion;
     ImageView imagen,opinion;
-    Button eliminar;
+    Button eliminar,regresar;
     Gson gson=new Gson();
     int posicion;
     ArrayList<Restaurantes> lista;
@@ -38,6 +38,7 @@ public class detallado extends AppCompatActivity {
         direccion=findViewById(R.id.textViewDirecion);
 
         eliminar=findViewById(R.id.botonBorrar);
+        regresar=findViewById(R.id.buttonRegresar);
 
         imagen=findViewById(R.id.imageViewImagen);
         opinion=findViewById(R.id.imageViewOpnion);
@@ -51,6 +52,8 @@ public class detallado extends AppCompatActivity {
         nombre.setText(elemento.getNomRest());
         direccion.setText(elemento.getDircyTel());
         descripcion.setText(elemento.getDesc());
+
+
 
         imagen.setImageResource(elemento.getImagen());
         opinion.setImageResource(elemento.getEstrellas());
@@ -81,10 +84,22 @@ public class detallado extends AppCompatActivity {
                        Toast t= Toast.makeText(v.getContext(),"ERROR",Toast.LENGTH_LONG);
                        t.show();
                 }
+                Intent intento=new Intent(v.getContext(),detallado.class);
                 Guardar();
+                startActivity(intento);
+            }
+        });
+
+        regresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intento=new Intent(v.getContext(),ListaDeRestaurantes.class);
+                startActivity(intento);
             }
         });
     }
+
+
 
     private ArrayList<Restaurantes> leerArchivo(String nombre) {
         String archivos[] = fileList();
@@ -128,4 +143,5 @@ public class detallado extends AppCompatActivity {
         }
 
     }
+
 }

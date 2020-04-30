@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickSalir(View v){
-        finish();
+        System.exit(0);
     }
 
     public void inClickMostrar(View v){
