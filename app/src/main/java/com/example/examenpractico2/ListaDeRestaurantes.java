@@ -29,19 +29,24 @@ public class ListaDeRestaurantes extends AppCompatActivity {
     ListView lstRes;
     /*Restaurantes[] rest2={
             new Restaurantes("La Junta", "Antojería informal y sencilla que se especializa en tacos y montados, con amplia barra de verduras y salsas."
-                    , "5542661", R.drawable.lajunta,R.drawable.dose),
-            new Restaurantes("Poeta", ""
-                    , "5542661", R.drawable.poeta,R.drawable.dose),
+                    , "5542661", R.drawable.lajunta,R.drawable.estrella3),
+            new Restaurantes("El Poeta", ""
+                    , "5542661", R.drawable.poeta,R.drawable.estrella3),
             new Restaurantes("El Papalote", ""
-                    , "5542661", R.drawable.elpapalote,R.drawable.trese),
+                    , "5542661", R.drawable.elpapalote,R.drawable.estrella2),
             new Restaurantes("El Rodeo", ""
-                    , "5542661", R.drawable.rodeo,R.drawable.unae),
+                    , "5542661", R.drawable.rodeo,R.drawable.estrella2),
             new Restaurantes("Chihua tacos", ""
+<<<<<<< Updated upstream
                     , "5542661", R.drawable.chihuas,R.drawable.trese)
     };*/
 
     ArrayList<Restaurantes> rest=new ArrayList();
     Gson gson=new Gson();
+=======
+                    , "5542661", R.drawable.chihuas,R.drawable.estrella1)
+    };
+>>>>>>> Stashed changes
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +55,7 @@ public class ListaDeRestaurantes extends AppCompatActivity {
         rest=leerArchivo("JSON.txt");
 
         lstRes=findViewById(R.id.lstRes);
+<<<<<<< Updated upstream
         lstRes.setAdapter((ListAdapter) new RestaurantAdapter(this, R.layout.activity_lista_de_restaurantes,rest));
 
         lstRes.setClickable(true);
@@ -60,6 +66,9 @@ public class ListaDeRestaurantes extends AppCompatActivity {
     protected void onDestroy() {
 
         super.onDestroy();
+=======
+        lstRes.setAdapter(new RestaurantAdapter(this, R.layout.activity_lista_de_restaurantes,rest));
+>>>>>>> Stashed changes
     }
 
     protected void mensaje(String mensaje){
